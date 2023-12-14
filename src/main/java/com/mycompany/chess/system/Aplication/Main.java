@@ -4,12 +4,16 @@
  */
 package com.mycompany.chess.system.Aplication;
 
+import com.mycompany.chess.system.Boardgame.Position;
+import com.mycompany.chess.system.Chess.ChessMath;
+
 /**
  *
  * @author devjava
  */
 public class Main {
     public static void main (String[] args){
-        System.out.println("Hello Word!");
+        ChessMath cm = new ChessMath();
+        UI.printBoard(cm.getPieces());
     }
 }

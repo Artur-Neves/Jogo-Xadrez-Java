@@ -1,2 +1,11 @@
 /home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Aplication/Main.java
-/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/ChessSystem.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Chess/Color.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Exception/BoardException.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Aplication/UI.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Boardgame/Piece.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Chess/pieces/King.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Boardgame/Position.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Boardgame/Board.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Chess/ChessMath.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Chess/ChessPiece.java
+/home/devjava/NetBeansProjects/Chess-system/src/main/java/com/mycompany/chess/system/Chess/pieces/Rook.java

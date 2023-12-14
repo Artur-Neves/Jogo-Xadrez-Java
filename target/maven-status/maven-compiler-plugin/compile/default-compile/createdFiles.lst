@@ -1,2 +1,11 @@
+com/mycompany/chess/system/Exception/BoardException.class
 com/mycompany/chess/system/Aplication/Main.class
-com/mycompany/chess/system/ChessSystem.class
+com/mycompany/chess/system/Chess/ChessPiece.class
+com/mycompany/chess/system/Chess/Color.class
+com/mycompany/chess/system/Aplication/UI.class
+com/mycompany/chess/system/Boardgame/Piece.class
+com/mycompany/chess/system/Chess/pieces/Rook.class
+com/mycompany/chess/system/Chess/pieces/King.class
+com/mycompany/chess/system/Boardgame/Board.class
+com/mycompany/chess/system/Boardgame/Position.class
+com/mycompany/chess/system/Chess/ChessMath.class
