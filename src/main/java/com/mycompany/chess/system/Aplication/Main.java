@@ -7,6 +7,7 @@ package com.mycompany.chess.system.Aplication;
 import com.mycompany.chess.system.Chess.ChessMath;
 import com.mycompany.chess.system.Chess.ChessPiece;
 import com.mycompany.chess.system.Chess.ChessPosition;
+import com.mycompany.chess.system.Exception.BoardException;
 import com.mycompany.chess.system.Exception.ChessException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -29,17 +30,29 @@ public class Main {
                 ChessPosition source = UI.readChessPosition(s);
 
                 System.out.println("");
-                System.out.println("Target: ");
+                System.out.print("Target: ");
                 ChessPosition target = UI.readChessPosition(s);
-                ChessPiece capture = cm.peformMove(source, target);
+                System.out.println("target"+target.toString());
+                ChessPiece capturedPiece =  cm.peformMove(source, target);
+                System.out.println("error");                
+//System.out.println("");
+                //s.nextLine();
             }
             catch(ChessException e){
                 System.out.println(e.getMessage());
-                s.nextLine();
+              
+                System.out.println("error");
             }
             catch(InputMismatchException e){
                System.out.println(e.getMessage());
-                s.nextLine(); 
+             
+                System.out.println("error");
+            }
+            catch(BoardException e){
+                e.printStackTrace();
+            }
+            catch(Exception e){
+               e.printStackTrace();
             }
         }
     }

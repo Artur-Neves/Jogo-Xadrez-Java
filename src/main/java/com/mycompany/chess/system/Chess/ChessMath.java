@@ -52,7 +52,9 @@ public class ChessMath {
     public ChessPiece peformMove (ChessPosition sourcePosirion, ChessPosition targetPosition){
         Position source = sourcePosirion.toPosition();
         Position target = targetPosition.toPosition();
+        
         validateSourcePosition(source);
+        validatetargetPosition(source, target);
         Piece caoturedPiece = makeMove(source, target);
         return (ChessPiece) caoturedPiece;
     }
@@ -61,7 +63,7 @@ public class ChessMath {
         if (!board.thereIsAPiece(source)){
             throw new ChessException("There is no piece on source position");
         }
-        if(!board.piece(source).isThereAnyPossibleMove()){
+        if(!board.piece(source.getRow(), source.getRow()).isThereAnyPossibleMove()){
             throw new ChessException("There is no possible moves for the chosen ");
         }
     }
@@ -71,5 +73,11 @@ public class ChessMath {
        Piece capt = board.remocePiece(target);
        board.placePiece(p, target);
        return capt;
+    }
+
+    private void validatetargetPosition(Position source, Position target) {
+       if (!board.piece(source).possibleModve(target)){
+           throw new ChessException("The chosen can't move to target position");
+       }
     }
 }
