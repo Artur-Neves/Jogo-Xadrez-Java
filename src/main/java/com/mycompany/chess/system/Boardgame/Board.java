@@ -54,6 +54,17 @@ public class Board {
         pieces[position.getRow()][position.getColumn()] = piece;
         piece.position = position;
     }
+    public Piece remocePiece(Position position){ 
+          if (!positionExist(new Position(position.getRow(), position.getColumn()))) {
+            throw new BoardException("Position not on the board");
+          }
+          else if (piece(position)==null){
+              return null;
+          }
+        Piece aux = piece(position);
+        pieces[position.getRow()][position.getColumn()]=null;
+        return aux;   
+    }
 
     public boolean positionExist(Position position) {
         int row = position.getRow();

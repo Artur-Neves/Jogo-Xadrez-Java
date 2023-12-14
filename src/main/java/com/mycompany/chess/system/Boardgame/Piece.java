@@ -8,7 +8,7 @@ package com.mycompany.chess.system.Boardgame;
  *
  * @author devjava
  */
-public class Piece {
+public abstract class Piece {
     protected Position position;
     private Board board;
 
@@ -18,5 +18,19 @@ public class Piece {
     
     protected Board getBoard(){
         return board;
+    }
+    public abstract boolean[][] possibleMovies();
+    public boolean possibleModve(Position position){
+       return  possibleMovies()[position.getRow()][position.getColumn()];
+    }
+    public boolean isThereAnyPossibleMove(){
+        boolean[][] now = possibleMovies();
+        for (int row=0;row<now.length; row++){
+            for (int column = 0; column<now.length; column++){
+                if (now[row][column])
+                    return true;
+            }
+        }
+        return false;
     }
 }

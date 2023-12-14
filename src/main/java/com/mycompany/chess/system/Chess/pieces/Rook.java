@@ -14,12 +14,18 @@ import com.mycompany.chess.system.Chess.Color;
  */
 public class Rook extends ChessPiece {
     
-    public Rook(Color color, Board board) {
+    public Rook( Board board, Color color) {
         super(color, board);
     }
     
     @Override
     public String toString(){
         return "R";
+    }
+
+    @Override
+    public boolean[][] possibleMovies() {
+      boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+    return mat;
     }
 }
