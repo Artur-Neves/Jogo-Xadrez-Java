@@ -5,11 +5,15 @@
 package com.mycompany.chess.system.Aplication;
 
 import com.mycompany.chess.system.Boardgame.Position;
+import com.mycompany.chess.system.Chess.ChessMath;
 import com.mycompany.chess.system.Chess.ChessPiece;
 import com.mycompany.chess.system.Chess.ChessPosition;
 import com.mycompany.chess.system.Chess.Color;
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -37,6 +41,15 @@ public class UI {
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+        public static void printMatch(ChessMath m, List<ChessPiece> cap){
+            printBoard(m.getPieces());
+            System.out.println("");
+            printCpturedPieces(cap);
+            System.out.println("");
+            System.out.println("Turn: "+ m.getTurn());
+            System.out.println("Waiting player: "+ m.getCurrentPlayer());
+        }
+        
     public static void printBoard(ChessPiece[][] cm) {
         for (int row = 0; row < cm.length; row++) {
             System.out.print((8 - row) + " ");
@@ -93,5 +106,20 @@ public static void clearScreen() {
 System.out.print("\033[H\033[2J");
 System.out.flush();
 }
+public static void printCpturedPieces(List<ChessPiece> captured){
+    List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
+    List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
+    System.out.println("Captured pieces: ");
+    System.out.print("White: ");
+    System.out.print(ANSI_WHITE);
+    System.out.println(Arrays.toString(white.toArray()));
+    System.out.println(ANSI_RESET);
+    System.out.print("Black: ");
+    System.out.print(ANSI_YELLOW);
+    System.out.println(Arrays.toString(black.toArray()));
+    System.out.println(ANSI_RESET);
+    
+}
 
 }
+

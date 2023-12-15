@@ -16,12 +16,31 @@ import com.mycompany.chess.system.Exception.ChessException;
  * @author devjava
  */
 public class ChessMath {
+    private int turn;
+    private Color currentPlayer;
     private Board board;
 
     public ChessMath() {
         this.board = new Board(8, 8);
+       turn =1;
+       currentPlayer = Color.WHITE;
         this.initialSetup();
     }
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public Color getCurrentPlayer() {
+        return currentPlayer;
+    }
+    
+    private void nexTurn(){
+        turn++;
+        currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
+    }
+    
+    
     public ChessPiece[][] getPieces(){
         ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
         for (int row=0; row<board.getRows(); row++){
@@ -59,6 +78,7 @@ public class ChessMath {
         Position target = targetPosition.toPosition();
         validateSourcePosition(source);
         validateTargetPosition(source, target);
+        nexTurn();
         Piece caoturedPiece = makeMove(source, target);
         return (ChessPiece) caoturedPiece;
     }
@@ -66,6 +86,9 @@ public class ChessMath {
     private void validateSourcePosition(Position source) {
         if (!board.thereIsAPiece(source)){
             throw new ChessException("There is no piece on source position");
+        }
+        if (currentPlayer != ((ChessPiece) board.piece(source)).getColor()){
+            throw new ChessException("The chosen pice is not yours");
         }
         if(!board.piece(source).isThereAnyPossibleMove()){
             throw new ChessException("There is no possible moves for the chosen ");

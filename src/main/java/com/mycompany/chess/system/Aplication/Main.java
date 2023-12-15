@@ -10,7 +10,9 @@ import com.mycompany.chess.system.Chess.ChessPiece;
 import com.mycompany.chess.system.Chess.ChessPosition;
 import com.mycompany.chess.system.Exception.BoardException;
 import com.mycompany.chess.system.Exception.ChessException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -22,10 +24,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         ChessMath cm = new ChessMath();
+        List<ChessPiece> capureds = new ArrayList<>();
         while (true) {
             try{
                 UI.clearScreen();
-                UI.printBoard(cm.getPieces());
+                UI.printMatch(cm, capureds);
                 System.out.println("");
                 System.out.print("Source: ");
                 ChessPosition source = UI.readChessPosition(s);
@@ -44,6 +47,9 @@ public class Main {
                 System.out.println("Target: ");
                 ChessPosition target = UI.readChessPosition(s);
                 ChessPiece capture = cm.peformMove(source, target);
+                if (capture!=null){
+                    capureds.add(capture);
+                }            
             }
             catch(ChessException e){
                 System.out.println(e.getMessage());
