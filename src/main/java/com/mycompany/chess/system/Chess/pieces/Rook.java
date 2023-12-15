@@ -5,7 +5,6 @@
 package com.mycompany.chess.system.Chess.pieces;
 
 import com.mycompany.chess.system.Boardgame.Board;
-import com.mycompany.chess.system.Boardgame.Position;
 import com.mycompany.chess.system.Chess.ChessPiece;
 import com.mycompany.chess.system.Chess.Color;
 
@@ -26,53 +25,7 @@ public class Rook extends ChessPiece {
 
     @Override
     public boolean[][] possibleMovies() {
-    boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
-    Position p = new Position(0, 0);
-    p.setValues( position.getColumn(), position.getRow()-1);
-    while(getBoard().positionExist(p) && !getBoard().thereIsAPiece(p)){
-        mat[p.getRow()][p.getColumn()]= true;
-        p.setValues(position.getRow(), position.getRow()-1);
-            
-        }
-    if (getBoard().positionExist(p) && isThereOpponentPiece(p)){
-        mat[p.getRow()][p.getColumn()] = true;
-    }
-    
-    // left
-    p.setValues(position.getRow(), position.getColumn()-1);
-    while(getBoard().positionExist(p) && !getBoard().thereIsAPiece(p)){
-        mat[p.getRow()][p.getColumn()]= true;
-        p.setValues( position.getRow(), position.getColumn()-1);
-            
-        }
-    if (getBoard().positionExist(p) && isThereOpponentPiece(p)){
-        mat[p.getRow()][p.getColumn()] = true;
-    }
-    
-    // right
-    p.setValues(position.getRow(), position.getColumn()+1);
-    while(getBoard().positionExist(p) && !getBoard().thereIsAPiece(p)){
-        mat[p.getRow()][p.getColumn()]= true;
-        p.setValues( position.getRow(), position.getColumn()+1);
-            
-        }
-    if (getBoard().positionExist(p) && isThereOpponentPiece(p)){
-        mat[p.getRow()][p.getColumn()] = true;
-    }
-    
-    // below
-    p.setValues(position.getRow()+1, position.getColumn());
-    while(getBoard().positionExist(p) && !getBoard().thereIsAPiece(p)){
-        mat[p.getRow()][p.getColumn()]= true;
-        p.setValues( position.getRow()+1, position.getColumn());
-            
-        }
-    if (getBoard().positionExist(p) && isThereOpponentPiece(p)){
-        mat[p.getRow()][p.getColumn()] = true;
-    }
-    
-     
-   
+      boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
     return mat;
     }
 }
