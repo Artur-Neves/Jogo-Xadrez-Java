@@ -4,6 +4,7 @@
  */
 package com.mycompany.chess.system.Aplication;
 
+import com.mycompany.chess.system.Boardgame.Position;
 import com.mycompany.chess.system.Chess.ChessPiece;
 import com.mycompany.chess.system.Chess.ChessPosition;
 import com.mycompany.chess.system.Chess.Color;
@@ -40,16 +41,31 @@ public class UI {
         for (int row = 0; row < cm.length; row++) {
             System.out.print((8 - row) + " ");
             for (int column = 0; column < cm.length; column++) {
-                printPiece(cm[row][column]);
+                printPiece(cm[row][column], false);
             }
             System.out.println("");
         }
         System.out.println("  a b c d e f g h");
     }
+    public static void printBoard(ChessPiece[][] cm, boolean [][] m) {
+        for (int row = 0; row < cm.length; row++) {
+            System.out.print((8 - row) + " ");
+            for (int column = 0; column < cm.length; column++) {
+                printPiece(cm[row][column], m[row][column]);
+            }
+            System.out.println("");
+        }
+        System.out.println("  a b c d e f g h");
+    }
+    
 
-    private static void printPiece(ChessPiece piece) {
+    private static void printPiece(ChessPiece piece, boolean background) {
+        if (background){
+            System.out.print(ANSI_BLUE_BACKGROUND);
+        }
+        
         if (piece == null) {
-            System.out.print("-");
+            System.out.print("-"+ANSI_RESET);
         } else {
             if (piece.getColor() == Color.WHITE) {
                 System.out.print(ANSI_WHITE + piece + ANSI_RESET);
@@ -68,6 +84,9 @@ public class UI {
         } catch (Exception e) {
             throw new InputMismatchException("Error reading ChessPosition. valid values are from a1 at h8.");
         }
+    }
+    public static String printChessPosition(Position position){
+        return new ChessPosition('a', 1).fromPosition(position).toString();
     }
     // https://stackoverflow.com/questions/2979383/java-clear-the-console
 public static void clearScreen() {
