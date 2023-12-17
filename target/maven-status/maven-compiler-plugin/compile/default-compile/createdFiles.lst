@@ -9,5 +9,6 @@ com/mycompany/chess/system/Chess/ChessMath.class
 com/mycompany/chess/system/Chess/ChessPosition.class
 com/mycompany/chess/system/Exception/BoardException.class
 com/mycompany/chess/system/Aplication/Main.class
+com/mycompany/chess/system/Chess/pieces/Pawn.class
 com/mycompany/chess/system/Chess/Color.class
 com/mycompany/chess/system/Boardgame/Piece.class

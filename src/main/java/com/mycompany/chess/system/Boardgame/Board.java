@@ -4,6 +4,7 @@
  */
 package com.mycompany.chess.system.Boardgame;
 
+import com.mycompany.chess.system.Chess.ChessPiece;
 import com.mycompany.chess.system.Exception.BoardException;
 
 /**
@@ -79,5 +80,7 @@ public class Board {
         }
         return piece(position) != null;
     }
+
+    
 
 }

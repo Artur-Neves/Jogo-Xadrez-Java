@@ -25,8 +25,8 @@ public class Main {
         Scanner s = new Scanner(System.in);
         ChessMath cm = new ChessMath();
         List<ChessPiece> capureds = new ArrayList<>();
-        while (true) {
-            try{
+        while (!cm.isCheckMate()) {
+            try {
                 UI.clearScreen();
                 UI.printMatch(cm, capureds);
                 System.out.println("");
@@ -36,32 +36,35 @@ public class Main {
                 UI.clearScreen();
                 UI.printBoard(cm.getPieces(), b);
                 System.out.print("possíveis posições: ");
-                for (int row=0; row<b.length; row++){
-                    for (int column = 0; column<b.length; column++){
-                        if (b[row][column]){
+                for (int row = 0; row < b.length; row++) {
+                    for (int column = 0; column < b.length; column++) {
+                        if (b[row][column]) {
 
-                            System.out.print(" "+UI.printChessPosition(new Position(row, column)));
-                        }}
+                            System.out.print(" " + UI.printChessPosition(new Position(row, column)));
+                        }
+                    }
                 }
                 System.out.println("");
                 System.out.println("Target: ");
                 ChessPosition target = UI.readChessPosition(s);
                 ChessPiece capture = cm.peformMove(source, target);
-                if (capture!=null){
+                if (capture != null) {
                     capureds.add(capture);
-                }            
-            }
-            catch(ChessException e){
+                }
+            } catch (ChessException e) {
+                System.out.println(e.getMessage());
+                s.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
+                s.nextLine();
+            } catch (BoardException e) {
+
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
                 s.nextLine();
             }
-            catch(InputMismatchException e){
-               System.out.println(e.getMessage());
-                s.nextLine(); 
-            }
-            catch(BoardException e){
-                
-            }
         }
+        UI.clearScreen();
+        UI.printMatch(cm, capureds);
     }
 }
