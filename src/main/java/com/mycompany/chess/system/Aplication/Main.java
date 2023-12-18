@@ -51,6 +51,15 @@ public class Main {
                 if (capture != null) {
                     capureds.add(capture);
                 }
+                if (cm.getPromoted() != null){
+                    System.out.print("Enter piece for promotion (B/N/R/Q): ");
+                    String type = s.nextLine().toUpperCase();
+                    while(!type.equals("B") && !type.equals("N") && !type.equals("Q") && !type.equals("N")){
+                        System.out.print("Invalid Value! Enter piece for promotion (B/N/R/Q): ");
+                    type = s.nextLine().toUpperCase();
+                    }
+                    cm.replacePromotedPiece(type);
+                }
             } catch (ChessException e) {
                 System.out.println(e.getMessage());
                 s.nextLine();
